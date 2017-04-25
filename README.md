@@ -1,4 +1,7 @@
-# api documentation for  [jscoverage (v0.6.0)](https://github.com/fishbar/jscoverage)  [![npm package](https://img.shields.io/npm/v/npmdoc-jscoverage.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-jscoverage) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-jscoverage.svg)](https://travis-ci.org/npmdoc/node-npmdoc-jscoverage)
+# npmdoc-jscoverage
+
+#### basic api documentation for  [jscoverage (v0.6.0)](https://github.com/fishbar/jscoverage)  [![npm package](https://img.shields.io/npm/v/npmdoc-jscoverage.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-jscoverage) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-jscoverage.svg)](https://travis-ci.org/npmdoc/node-npmdoc-jscoverage)
+
 #### a javascript coverage tool, can be used in node dev, and browser side js dev
 
 [![NPM](https://nodei.co/npm/jscoverage.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/jscoverage)
