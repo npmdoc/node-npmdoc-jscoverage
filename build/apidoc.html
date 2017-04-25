@@ -162,12 +162,6 @@
 
         <li>
 
-            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">jscoverage.</span>spec</span>
-
-        </li>
-
-        <li>
-
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">jscoverage.</span>tap</span>
 
         </li>
@@ -180,32 +174,6 @@
 
     </ol></li>
 
-    <li class="apidocModuleLi"><a href="#apidoc.module.jscoverage.config">module jscoverage.config</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.jscoverage.config.config">
-            function <span class="apidocSignatureSpan">jscoverage.</span>config
-            <span class="apidocSignatureSpan">(obj)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.jscoverage.coverageStats">module jscoverage.coverageStats</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.jscoverage.coverageStats.coverageStats">
-            function <span class="apidocSignatureSpan">jscoverage.</span>coverageStats
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
     <li class="apidocModuleLi"><a href="#apidoc.module.jscoverage.detail">module jscoverage.detail</a><ol>
 
         <li>
@@ -213,32 +181,6 @@
             <a class="apidocElementLiA" href="#apidoc.element.jscoverage.detail.process">
             function <span class="apidocSignatureSpan">jscoverage.detail.</span>process
             <span class="apidocSignatureSpan">(_$jscoverage, stats, covlevel, debug)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.jscoverage.enableInject">module jscoverage.enableInject</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.jscoverage.enableInject.enableInject">
-            function <span class="apidocSignatureSpan">jscoverage.</span>enableInject
-            <span class="apidocSignatureSpan">(bool)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.jscoverage.getLCOV">module jscoverage.getLCOV</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.jscoverage.getLCOV.getLCOV">
-            function <span class="apidocSignatureSpan">jscoverage.</span>getLCOV
-            <span class="apidocSignatureSpan">()</span>
             </a>
 
         </li>
@@ -389,45 +331,6 @@
 
     </ol></li>
 
-    <li class="apidocModuleLi"><a href="#apidoc.module.jscoverage.process">module jscoverage.process</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.jscoverage.process.process">
-            function <span class="apidocSignatureSpan">jscoverage.</span>process
-            <span class="apidocSignatureSpan">(filename, content)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.jscoverage.processFile">module jscoverage.processFile</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.jscoverage.processFile.processFile">
-            function <span class="apidocSignatureSpan">jscoverage.</span>processFile
-            <span class="apidocSignatureSpan">(source, dest, option)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.jscoverage.spec">module jscoverage.spec</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.jscoverage.spec.process">
-            function <span class="apidocSignatureSpan">jscoverage.spec.</span>process
-            <span class="apidocSignatureSpan">(_$jscoverage, stats, covlevel, name, utils)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
     <li class="apidocModuleLi"><a href="#apidoc.module.jscoverage.tap">module jscoverage.tap</a><ol>
 
         <li>
@@ -492,21 +395,22 @@
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-*/
-exports.enableInject = patch.enableInject;
-/**
-* config the inject function names
-* @param  {Object} obj  {get, replace, call, reset}
-* @example
-*
-*  jsc.<span class="apidocCodeKeywordSpan">config</span>({get:&#x27;$get&#x27;, replace:&#x27;$replace&#x27;});
-*
-*  =====================
-*
-*  testMod = require(&#x27;testmodule&#x27;);
-*  testMod.$get(&#x27;name&#x27;);
-*  testMod.$replace(&#x27;name&#x27;, obj);
-*/
+function injectFunctionBody() {
+(function (){
+if (module.exports._i_n_j_e_c_t_e_d_) {
+  return;
+}
+if (module.exports.$$call$$ || module.exports.$$get$$ ||
+    module.exports.$$replace$$ || module.exports.$$reset$$) {
+  throw new Error(&#x22;[jscoverage] jscoverage can not inject function for this module, because the function is exists! using jsc
+.<span class="apidocCodeKeywordSpan">config</span>({inject:{}})&#x22;);
+}
+
+var __r_e_p_l_a_c_e__ = {};
+module.exports.$$replace$$ = function (name, obj) {
+  function stringify(obj) {
+    if (obj === null) {
+      return &#x27;null&#x27;;
 ...</pre></li>
     </ul>
 
@@ -581,24 +485,7 @@ exports.enableInject = patch.enableInject;
   }
   return stats;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-      }
-      var reporter;
-      if (/^\w+$/.test(argv.covout)) {
-        reporter = require(&#x27;./reporter/&#x27; + argv.covout);
-      } else {
-        reporter = require(argv.covout);
-      }
-      reporter.process(_$jscoverage, exports.<span class="apidocCodeKeywordSpan">coverageStats</span>(), covlevel, COV_REPORT_NAME
-, rptUtil);
-    } catch (e) {
-      console.error(&#x27;jscoverage reporter error&#x27;, e, e.stack);
-    }
-  });
-} catch (e) {
-  // do nothing
-}
-...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
 
@@ -613,23 +500,7 @@ exports.enableInject = patch.enableInject;
     <li>description and source-code<pre class="apidocCodePre">enableInject = function (bool) {
   covInject = bool;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-    });
-  } catch (e) {
-    // do nothing
-  }
-});
-if (argv.covinject) {
-  debug(&#x27;covinject enabled&#x27;);
-  patch.<span class="apidocCodeKeywordSpan">enableInject</span>(true);
-}
-if (!covIgnore) {
-  try {
-    var stat = fs.statSync(&#x27;.covignore&#x27;);
-    stat &#x26;&#x26; (covIgnore = &#x27;.covignore&#x27;);
-    debug(&#x27;.covignore file found!&#x27;);
-  } catch (e) {
-...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
 
@@ -742,22 +613,21 @@ if (!covIgnore) {
   return genCodeCoverage(instrObj);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-      }
-      var reporter;
-      if (/^\w+$/.test(argv.covout)) {
-        reporter = require(&#x27;./reporter/&#x27; + argv.covout);
-      } else {
-        reporter = require(argv.covout);
-      }
-      reporter.<span class="apidocCodeKeywordSpan">process</span>(_$jscoverage, exports.coverageStats(), covlevel, COV_REPORT_NAME
-, rptUtil);
-    } catch (e) {
-      console.error(&#x27;jscoverage reporter error&#x27;, e, e.stack);
-    }
-  });
-} catch (e) {
-  // do nothing
-}
+ * Create   : 2014-04-03 15:20:13
+ * CopyRight 2014 (c) Fish And Other Contributors
+ */
+/**
+ * instrument code
+ * @example
+ *   var ist = new Instrument();
+ *   var resCode = ist.<span class="apidocCodeKeywordSpan">process</span>(str);
+ */
+var debug = require(&#x27;debug&#x27;)(&#x27;cov:instrument&#x27;);
+var Uglify = require(&#x27;uglify-js&#x27;);
+
+function Instrument() {
+/**
+ * filename needed
 ...</pre></li>
     </ul>
 
@@ -832,143 +702,6 @@ if (!covIgnore) {
 
 
 
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.jscoverage.config" id="apidoc.module.jscoverage.config">module jscoverage.config</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.jscoverage.config.config" id="apidoc.element.jscoverage.config.config">
-        function <span class="apidocSignatureSpan">jscoverage.</span>config
-        <span class="apidocSignatureSpan">(obj)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">config = function (obj) {
-  var inject_functions = patch.getInjectFunctions();
-  for (var i in obj) {
-    inject_functions[i] = obj[i];
-  }
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-*/
-exports.enableInject = patch.enableInject;
-/**
-* config the inject function names
-* @param  {Object} obj  {get, replace, call, reset}
-* @example
-*
-*  jsc.<span class="apidocCodeKeywordSpan">config</span>({get:&#x27;$get&#x27;, replace:&#x27;$replace&#x27;});
-*
-*  =====================
-*
-*  testMod = require(&#x27;testmodule&#x27;);
-*  testMod.$get(&#x27;name&#x27;);
-*  testMod.$replace(&#x27;name&#x27;, obj);
-*/
-...</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.jscoverage.coverageStats" id="apidoc.module.jscoverage.coverageStats">module jscoverage.coverageStats</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.jscoverage.coverageStats.coverageStats" id="apidoc.element.jscoverage.coverageStats.coverageStats">
-        function <span class="apidocSignatureSpan">jscoverage.</span>coverageStats
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">coverageStats = function () {
-  var file;
-  var tmp;
-  var lineTotal;
-  var lineHits;
-  var branchTotal;
-  var branchHits;
-  var n, len;
-  var stats = {};
-  var branches, branchesMap, branch;
-  var line, start, offset;
-  if (typeof _$jscoverage === &#x27;undefined&#x27;) {
-    return;
-  }
-  for (var i in _$jscoverage) {
-    file = i;
-    tmp = _$jscoverage[i];
-    if (!tmp.length) {
-      continue;
-    }
-    // reset the counters;
-    lineTotal = lineHits = 0;
-    branchTotal = branchHits = 0;
-
-    for (n = 0, len = tmp.length; n &#x3c; len; n++) {
-      if (tmp[n] !== undefined) {
-        lineTotal ++;
-        if (tmp[n] &#x3e; 0) {
-          lineHits ++;
-        }
-      }
-    }
-    // calculate the branches coverage
-    branches = tmp.condition;
-    branchesMap = {};
-    for (n in branches) {
-      if (branches[n] === 0) {
-        branch = n.split(&#x27;_&#x27;);
-        line = branch[0];
-        start = parseInt(branch[1], 10);
-        offset = parseInt(branch[2], 10);
-        if (!branchesMap[line]) {
-          branchesMap[line] = [];
-        }
-        branchesMap[line].push([start, offset]);
-      } else {
-        branchHits ++;
-      }
-      branchTotal ++;
-    }
-    stats[file] = {
-      lineSloc: lineTotal,
-      lineHits: lineHits,
-      lineCoverage: lineTotal ? fixData(lineHits / lineTotal) : 1,
-      branchSloc: branchTotal,
-      branchHits: branchHits,
-      branchCoverage: branchTotal ? fixData(branchHits / branchTotal) : 1,
-      branches: branchesMap
-    };
-  }
-  return stats;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-      }
-      var reporter;
-      if (/^\w+$/.test(argv.covout)) {
-        reporter = require(&#x27;./reporter/&#x27; + argv.covout);
-      } else {
-        reporter = require(argv.covout);
-      }
-      reporter.process(_$jscoverage, exports.<span class="apidocCodeKeywordSpan">coverageStats</span>(), covlevel, COV_REPORT_NAME
-, rptUtil);
-    } catch (e) {
-      console.error(&#x27;jscoverage reporter error&#x27;, e, e.stack);
-    }
-  });
-} catch (e) {
-  // do nothing
-}
-...</pre></li>
-    </ul>
-
-
 </div>
 
 <div class="apidocSectionDiv">
@@ -1018,105 +751,22 @@ exports.enableInject = patch.enableInject;
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-      }
-      var reporter;
-      if (/^\w+$/.test(argv.covout)) {
-        reporter = require(&#x27;./reporter/&#x27; + argv.covout);
-      } else {
-        reporter = require(argv.covout);
-      }
-      reporter.<span class="apidocCodeKeywordSpan">process</span>(_$jscoverage, exports.coverageStats(), covlevel, COV_REPORT_NAME
-, rptUtil);
-    } catch (e) {
-      console.error(&#x27;jscoverage reporter error&#x27;, e, e.stack);
-    }
-  });
-} catch (e) {
-  // do nothing
-}
+ * Create   : 2014-04-03 15:20:13
+ * CopyRight 2014 (c) Fish And Other Contributors
+ */
+/**
+ * instrument code
+ * @example
+ *   var ist = new Instrument();
+ *   var resCode = ist.<span class="apidocCodeKeywordSpan">process</span>(str);
+ */
+var debug = require(&#x27;debug&#x27;)(&#x27;cov:instrument&#x27;);
+var Uglify = require(&#x27;uglify-js&#x27;);
+
+function Instrument() {
+/**
+ * filename needed
 ...</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.jscoverage.enableInject" id="apidoc.module.jscoverage.enableInject">module jscoverage.enableInject</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.jscoverage.enableInject.enableInject" id="apidoc.element.jscoverage.enableInject.enableInject">
-        function <span class="apidocSignatureSpan">jscoverage.</span>enableInject
-        <span class="apidocSignatureSpan">(bool)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">enableInject = function (bool) {
-  covInject = bool;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-    });
-  } catch (e) {
-    // do nothing
-  }
-});
-if (argv.covinject) {
-  debug(&#x27;covinject enabled&#x27;);
-  patch.<span class="apidocCodeKeywordSpan">enableInject</span>(true);
-}
-if (!covIgnore) {
-  try {
-    var stat = fs.statSync(&#x27;.covignore&#x27;);
-    stat &#x26;&#x26; (covIgnore = &#x27;.covignore&#x27;);
-    debug(&#x27;.covignore file found!&#x27;);
-  } catch (e) {
-...</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.jscoverage.getLCOV" id="apidoc.module.jscoverage.getLCOV">module jscoverage.getLCOV</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.jscoverage.getLCOV.getLCOV" id="apidoc.element.jscoverage.getLCOV.getLCOV">
-        function <span class="apidocSignatureSpan">jscoverage.</span>getLCOV
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">getLCOV = function () {
-  var tmp;
-  var total;
-  var touched;
-  var n, len;
-  var lcov = &#x27;&#x27;;
-  if (typeof _$jscoverage === &#x27;undefined&#x27;) {
-    return;
-  }
-  Object.keys(_$jscoverage).forEach(function (file) {
-    lcov += &#x27;SF:&#x27; + file + &#x27;\n&#x27;;
-    tmp = _$jscoverage[file];
-    if (!tmp.length) {
-      return;
-    }
-    total = touched = 0;
-    for (n = 0, len = tmp.length; n &#x3c; len; n++) {
-      if (tmp[n] !== undefined) {
-        lcov += &#x27;DA:&#x27; + n + &#x27;,&#x27; + tmp[n] + &#x27;\n&#x27;;
-        total ++;
-        if (tmp[n] &#x3e; 0) {
-          touched++;
-        }
-      }
-    }
-    lcov += &#x27;end_of_record\n&#x27;;
-  });
-  return lcov;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
 
@@ -1190,22 +840,21 @@ if (!covIgnore) {
   console.log(&#x27;[REPORTER]: &#x27;, process.cwd() + &#x27;/covreporter&#x27;);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-      }
-      var reporter;
-      if (/^\w+$/.test(argv.covout)) {
-        reporter = require(&#x27;./reporter/&#x27; + argv.covout);
-      } else {
-        reporter = require(argv.covout);
-      }
-      reporter.<span class="apidocCodeKeywordSpan">process</span>(_$jscoverage, exports.coverageStats(), covlevel, COV_REPORT_NAME
-, rptUtil);
-    } catch (e) {
-      console.error(&#x27;jscoverage reporter error&#x27;, e, e.stack);
-    }
-  });
-} catch (e) {
-  // do nothing
-}
+ * Create   : 2014-04-03 15:20:13
+ * CopyRight 2014 (c) Fish And Other Contributors
+ */
+/**
+ * instrument code
+ * @example
+ *   var ist = new Instrument();
+ *   var resCode = ist.<span class="apidocCodeKeywordSpan">process</span>(str);
+ */
+var debug = require(&#x27;debug&#x27;)(&#x27;cov:instrument&#x27;);
+var Uglify = require(&#x27;uglify-js&#x27;);
+
+function Instrument() {
+/**
+ * filename needed
 ...</pre></li>
     </ul>
 
@@ -1502,22 +1151,21 @@ if (node instanceof Uglify.AST_Conditional) { // 三元判断
   return this;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-      }
-      var reporter;
-      if (/^\w+$/.test(argv.covout)) {
-        reporter = require(&#x27;./reporter/&#x27; + argv.covout);
-      } else {
-        reporter = require(argv.covout);
-      }
-      reporter.<span class="apidocCodeKeywordSpan">process</span>(_$jscoverage, exports.coverageStats(), covlevel, COV_REPORT_NAME
-, rptUtil);
-    } catch (e) {
-      console.error(&#x27;jscoverage reporter error&#x27;, e, e.stack);
-    }
-  });
-} catch (e) {
-  // do nothing
-}
+ * Create   : 2014-04-03 15:20:13
+ * CopyRight 2014 (c) Fish And Other Contributors
+ */
+/**
+ * instrument code
+ * @example
+ *   var ist = new Instrument();
+ *   var resCode = ist.<span class="apidocCodeKeywordSpan">process</span>(str);
+ */
+var debug = require(&#x27;debug&#x27;)(&#x27;cov:instrument&#x27;);
+var Uglify = require(&#x27;uglify-js&#x27;);
+
+function Instrument() {
+/**
+ * filename needed
 ...</pre></li>
     </ul>
 
@@ -1590,22 +1238,21 @@ this.source = code.split(/\r?\n/);
   return genCodeCoverage(instrObj);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-      }
-      var reporter;
-      if (/^\w+$/.test(argv.covout)) {
-        reporter = require(&#x27;./reporter/&#x27; + argv.covout);
-      } else {
-        reporter = require(argv.covout);
-      }
-      reporter.<span class="apidocCodeKeywordSpan">process</span>(_$jscoverage, exports.coverageStats(), covlevel, COV_REPORT_NAME
-, rptUtil);
-    } catch (e) {
-      console.error(&#x27;jscoverage reporter error&#x27;, e, e.stack);
-    }
-  });
-} catch (e) {
-  // do nothing
-}
+ * Create   : 2014-04-03 15:20:13
+ * CopyRight 2014 (c) Fish And Other Contributors
+ */
+/**
+ * instrument code
+ * @example
+ *   var ist = new Instrument();
+ *   var resCode = ist.<span class="apidocCodeKeywordSpan">process</span>(str);
+ */
+var debug = require(&#x27;debug&#x27;)(&#x27;cov:instrument&#x27;);
+var Uglify = require(&#x27;uglify-js&#x27;);
+
+function Instrument() {
+/**
+ * filename needed
 ...</pre></li>
     </ul>
 
@@ -1651,22 +1298,21 @@ this.source = code.split(/\r?\n/);
   console.log(arr.join(&#x27;\n&#x27;));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-      }
-      var reporter;
-      if (/^\w+$/.test(argv.covout)) {
-        reporter = require(&#x27;./reporter/&#x27; + argv.covout);
-      } else {
-        reporter = require(argv.covout);
-      }
-      reporter.<span class="apidocCodeKeywordSpan">process</span>(_$jscoverage, exports.coverageStats(), covlevel, COV_REPORT_NAME
-, rptUtil);
-    } catch (e) {
-      console.error(&#x27;jscoverage reporter error&#x27;, e, e.stack);
-    }
-  });
-} catch (e) {
-  // do nothing
-}
+ * Create   : 2014-04-03 15:20:13
+ * CopyRight 2014 (c) Fish And Other Contributors
+ */
+/**
+ * instrument code
+ * @example
+ *   var ist = new Instrument();
+ *   var resCode = ist.<span class="apidocCodeKeywordSpan">process</span>(str);
+ */
+var debug = require(&#x27;debug&#x27;)(&#x27;cov:instrument&#x27;);
+var Uglify = require(&#x27;uglify-js&#x27;);
+
+function Instrument() {
+/**
+ * filename needed
 ...</pre></li>
     </ul>
 
@@ -1687,23 +1333,7 @@ this.source = code.split(/\r?\n/);
     <li>description and source-code<pre class="apidocCodePre">enableInject = function (bool) {
   covInject = bool;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-    });
-  } catch (e) {
-    // do nothing
-  }
-});
-if (argv.covinject) {
-  debug(&#x27;covinject enabled&#x27;);
-  patch.<span class="apidocCodeKeywordSpan">enableInject</span>(true);
-}
-if (!covIgnore) {
-  try {
-    var stat = fs.statSync(&#x27;.covignore&#x27;);
-    stat &#x26;&#x26; (covIgnore = &#x27;.covignore&#x27;);
-    debug(&#x27;.covignore file found!&#x27;);
-  } catch (e) {
-...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
 
@@ -1719,21 +1349,21 @@ if (!covIgnore) {
   return injectFunctions;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-*  =====================
-*
-*  testMod = require(&#x27;testmodule&#x27;);
-*  testMod.$get(&#x27;name&#x27;);
-*  testMod.$replace(&#x27;name&#x27;, obj);
-*/
-exports.config = function (obj) {
- var inject_functions = patch.<span class="apidocCodeKeywordSpan">getInjectFunctions</span>();
- for (var i in obj) {
-   inject_functions[i] = obj[i];
- }
-};
-/**
-* process Code, inject the coverage code to the input Code string
-* @param {String} filename  jscoverage file flag
+    content = content.slice(1);
+  }
+  return content;
+}
+Module._extensions[&#x27;.js&#x27;] = function (module, filename, status) {
+  var content = fs.readFileSync(filename, &#x27;utf8&#x27;);
+  var tmpFuncBody;
+  var injectFn = exports.<span class="apidocCodeKeywordSpan">getInjectFunctions</span>();
+  // trim first line when script is a shell script
+  // content = content.replace(/^\#\![^\n]+\n/, &#x27;&#x27;);
+  if (status &#x26;&#x26; status.flagjsc) {
+    content = jscoverage.process(filename, content);
+  }
+  if (status &#x26;&#x26; status.needinject) {
+    tmpFuncBody = injectFunctionBody.toString().replace(/\$\$(\w+)\$\$/g, function (m0, m1) {
 ...</pre></li>
     </ul>
 
@@ -1753,191 +1383,7 @@ exports.config = function (obj) {
     covIgnore = ignore.concat(defaultCovIgnore);
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-   }
-   if (v.indexOf(&#x27;/&#x27;) === 0) {
-     v = &#x27;^&#x27; + cwd + v;
-   }
-   _ignore.push(new RegExp(v.replace(/\./g, &#x27;\\.&#x27;).replace(/\*/g, &#x27;.*&#x27;)));
- });
-
- patch.<span class="apidocCodeKeywordSpan">setCovIgnore</span>(_ignore, argv.overrideIgnore ? true : false);
-}
-
-var jscoverage = require(&#x27;./lib/jscoverage&#x27;);
-
-/**
-* enableInject description
-* @param {Boolean} true or false
-...</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.jscoverage.process" id="apidoc.module.jscoverage.process">module jscoverage.process</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.jscoverage.process.process" id="apidoc.element.jscoverage.process.process">
-        function <span class="apidocSignatureSpan">jscoverage.</span>process
-        <span class="apidocSignatureSpan">(filename, content)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">process = function (filename, content) {
-  if (!filename) {
-    throw new Error(&#x27;jscoverage.process(filename, content), filename needed!&#x27;);
-  }
-  filename = filename.replace(/\\/g, &#x27;/&#x27;);
-  if (!content) {
-    return &#x27;&#x27;;
-  }
-  var pwd = process.cwd();
-  var fname;
-  if (filename.indexOf(pwd) === 0) {
-    fname = filename.substr(pwd.length + 1);
-  } else {
-    fname = filename;
-  }
-  var instrObj;
-  var ist = new Instrument();
-  instrObj = ist.process(fname, content);
-  return genCodeCoverage(instrObj);
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-      }
-      var reporter;
-      if (/^\w+$/.test(argv.covout)) {
-        reporter = require(&#x27;./reporter/&#x27; + argv.covout);
-      } else {
-        reporter = require(argv.covout);
-      }
-      reporter.<span class="apidocCodeKeywordSpan">process</span>(_$jscoverage, exports.coverageStats(), covlevel, COV_REPORT_NAME
-, rptUtil);
-    } catch (e) {
-      console.error(&#x27;jscoverage reporter error&#x27;, e, e.stack);
-    }
-  });
-} catch (e) {
-  // do nothing
-}
-...</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.jscoverage.processFile" id="apidoc.module.jscoverage.processFile">module jscoverage.processFile</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.jscoverage.processFile.processFile" id="apidoc.element.jscoverage.processFile.processFile">
-        function <span class="apidocSignatureSpan">jscoverage.</span>processFile
-        <span class="apidocSignatureSpan">(source, dest, option)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">processFile = function (source, dest, option) {
-  var content;
-  var stats;
-  // test source is file or dir, or not a file
-  try {
-    stats = fs.statSync(source);
-    if (stats.isDirectory()) {
-      throw new Error(&#x27;path is dir&#x27;);
-    } else if (!stats.isFile()) {
-      throw new Error(&#x27;path is not a regular file&#x27;);
-    }
-  } catch (e) {
-    throw new Error(&#x27;source file error&#x27; + e);
-  }
-
-  fs.sync().mkdir(path.dirname(dest));
-
-  content = fs.readFileSync(source).toString();
-  var sheBang = false;
-  if (content.charCodeAt(0) === 65279) {
-    content = content.substr(1);
-  }
-  // cut the shebang
-  if (content.indexOf(&#x27;#!&#x27;) === 0) {
-    var firstLineEnd = content.indexOf(&#x27;\n&#x27;);
-    sheBang = content.substr(0, firstLineEnd + 1);
-    content = content.substr(firstLineEnd + 1);
-  }
-  // check if coffee script
-  var ext = path.extname(source);
-  if (ext === &#x27;.coffee&#x27; || ext === &#x27;.litcoffee&#x27;) {
-    var CoffeeScript = require(&#x27;coffee-script&#x27;);
-    content = CoffeeScript.compile(content, {
-      filename: source
-    });
-  }
-  content = this.process(source, content);
-  if (sheBang) {
-    content = sheBang + content;
-  }
-  fs.writeFileSync(dest, content);
-}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.jscoverage.spec" id="apidoc.module.jscoverage.spec">module jscoverage.spec</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.jscoverage.spec.process" id="apidoc.element.jscoverage.spec.process">
-        function <span class="apidocSignatureSpan">jscoverage.spec.</span>process
-        <span class="apidocSignatureSpan">(_$jscoverage, stats, covlevel, name, utils)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">process = function (_$jscoverage, stats, covlevel, name, utils) {
-  var arr = [];
-  var colorful = utils.colorful;
-  console.log(&#x27;\n&#x27;);
-  console.log(colorful(&#x27;%s%s&#x27;, &#x27;DEFAULT&#x27;), indent(), &#x27;Coverage result&#x27;);
-  indents ++;
-  var files = Object.keys(stats);
-  var maxFileLength = maxStr(files);
-  files.forEach(function (file) {
-    var coverage = stats[file].lineCoverage;
-    var type = utils.getType(covlevel, coverage);
-    var head = type[1];
-    type = type[0];
-    var msg = fillStr(file, maxFileLength) +
-      &#x27;line[&#x27; + colorful(formatPercent(stats[file].lineCoverage), type) + &#x27;]&#x27; +
-      &#x27;  branch[&#x27; + colorful(formatPercent(stats[file].branchCoverage), type) + &#x27;]&#x27;;
-    msg = indent() + colorful(head, type) + &#x27; &#x27; + colorful(msg, &#x27;DEFAULT&#x27;);
-    arr.push(msg);
-  });
-  console.log(arr.join(&#x27;\n&#x27;));
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-      }
-      var reporter;
-      if (/^\w+$/.test(argv.covout)) {
-        reporter = require(&#x27;./reporter/&#x27; + argv.covout);
-      } else {
-        reporter = require(argv.covout);
-      }
-      reporter.<span class="apidocCodeKeywordSpan">process</span>(_$jscoverage, exports.coverageStats(), covlevel, COV_REPORT_NAME
-, rptUtil);
-    } catch (e) {
-      console.error(&#x27;jscoverage reporter error&#x27;, e, e.stack);
-    }
-  });
-} catch (e) {
-  // do nothing
-}
-...</pre></li>
     </ul>
 
 
@@ -1979,22 +1425,21 @@ var jscoverage = require(&#x27;./lib/jscoverage&#x27;);
   console.log(&#x27;# coverage line %s, branch %s&#x27;, lineCoverage, branchCoverage);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-      }
-      var reporter;
-      if (/^\w+$/.test(argv.covout)) {
-        reporter = require(&#x27;./reporter/&#x27; + argv.covout);
-      } else {
-        reporter = require(argv.covout);
-      }
-      reporter.<span class="apidocCodeKeywordSpan">process</span>(_$jscoverage, exports.coverageStats(), covlevel, COV_REPORT_NAME
-, rptUtil);
-    } catch (e) {
-      console.error(&#x27;jscoverage reporter error&#x27;, e, e.stack);
-    }
-  });
-} catch (e) {
-  // do nothing
-}
+ * Create   : 2014-04-03 15:20:13
+ * CopyRight 2014 (c) Fish And Other Contributors
+ */
+/**
+ * instrument code
+ * @example
+ *   var ist = new Instrument();
+ *   var resCode = ist.<span class="apidocCodeKeywordSpan">process</span>(str);
+ */
+var debug = require(&#x27;debug&#x27;)(&#x27;cov:instrument&#x27;);
+var Uglify = require(&#x27;uglify-js&#x27;);
+
+function Instrument() {
+/**
+ * filename needed
 ...</pre></li>
     </ul>
 
@@ -2090,21 +1535,22 @@ Object.keys(stats).forEach(function (file) {
   return [type, head];
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-console.log(&#x27;\n&#x27;);
-console.log(colorful(&#x27;%s%s&#x27;, &#x27;DEFAULT&#x27;), indent(), &#x27;Coverage result&#x27;);
-indents ++;
-var files = Object.keys(stats);
-var maxFileLength = maxStr(files);
-files.forEach(function (file) {
+exports.process = function (_$jscoverage, stats, covlevel, name, utils) {
+var arr = [];
+var lineSloc = 0, branchSloc = 0;
+var lineHits =0, branchHits = 0;
+var formatCoverage = utils.formatCoverage;
+Object.keys(stats).forEach(function (file) {
   var coverage = stats[file].lineCoverage;
-  var type = utils.<span class="apidocCodeKeywordSpan">getType</span>(covlevel, coverage);
-  var head = type[1];
-  type = type[0];
-  var msg = fillStr(file, maxFileLength) +
-    &#x27;line[&#x27; + colorful(formatPercent(stats[file].lineCoverage), type) + &#x27;]&#x27; +
-    &#x27;  branch[&#x27; + colorful(formatPercent(stats[file].branchCoverage), type) + &#x27;]&#x27;;
-  msg = indent() + colorful(head, type) + &#x27; &#x27; + colorful(msg, &#x27;DEFAULT&#x27;);
+  var type = utils.<span class="apidocCodeKeywordSpan">getType</span>(covlevel, coverage)[0];
+  var msg = &#x27;Coverage &#x27; + file + &#x27;: line[&#x27; + utils.colorful(formatCoverage(stats[file].lineCoverage), type) + &#
+x27;]&#x27; +
+    &#x27;, branch[&#x27; + utils.colorful(formatCoverage(stats[file].branchCoverage), type) + &#x27;]&#x27;;
+  msg = &#x27;#  &#x27; + utils.colorful(&#x27;\u204D&#x27;, type) + &#x27; &#x27; +  utils.colorful(msg, &#x27;DEFAULT&#x27;);
   arr.push(msg);
+  lineSloc += stats[file].lineSloc;
+  lineHits += stats[file].lineHits;
+  branchSloc += stats[file].branchSloc;
 ...</pre></li>
     </ul>
 
